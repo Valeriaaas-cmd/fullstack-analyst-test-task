@@ -15,7 +15,7 @@
 
 ## Задача 1: BPMN-модель выдачи ИТ-оборудования
 
-- **Диаграмма**: [`task1_bpmn/it_equipment_workflow.svg`](task1_bpmn/it_equipment._workflow.svg)  
+- **Диаграмма**: [`task1_bpmn/it_equipment_workflow.drawio`](task1_bpmn/it_equipment._workflow.drawio)  
 - **Допущения и вопросы**: [`task1_bpmn/assumptions_and_issues.md`](task1_bpmn/assumptions_and_issues.md)
 
 Модель построена в нотации **BPMN 2.0** с использованием:
