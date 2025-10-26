@@ -28,7 +28,7 @@
 ## Задача 2: Публикация товара на маркетплейсе
 
 - **User Story + Use Cases**: [`task2_marketplace/user_story_and_use_cases.md`](task2_marketplace/user_story_and_use_cases.md)
-- **Диаграмма процесса**: [`task2_marketplace/publish_product_flow.drawio`](task2_marketplace/publish_product_flow.drawio)
+- **Диаграмма процесса**: [`task2_marketplace/publish_product_flow.drawio`](task2_marketplace/publish_product_flow.svg)
 
 Описаны:
 - Основной, альтернативный и исключительные сценарии
