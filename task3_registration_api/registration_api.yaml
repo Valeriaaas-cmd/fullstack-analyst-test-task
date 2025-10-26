@@ -1,1 +1,124 @@
-
+openapi: 3.0.3
+info:
+  title: User Registration API
+  version: 1.0.0
+  description: REST API for user registration in frontend form
+paths:
+  /api/v1/users/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  example: Ivan
+                  minLength: 1
+                  maxLength: 50
+                lastName:
+                  type: string
+                  example: Ivanov
+                  minLength: 1
+                  maxLength: 50
+                username:
+                  type: string
+                  example: ivan
+                  minLength: 3
+                  maxLength: 30
+                  pattern: '^[a-zA-Z0-9_]+$'
+                password:
+                  type: string
+                  example: SecurePass123!
+                  minLength: 8
+                  pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+                recaptchaToken:
+                  type: string
+                  example: "03AGdBq27..."
+                  description: Token from reCAPTCHA v2 or v3
+                  minLength: 1
+              required: [firstName, lastName, username, password, recaptchaToken]
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    example: "usr_5f8d3a2b1c9d4e7f"
+                  firstName:
+                    type: string
+                    example: Ivan
+                  lastName:
+                    type: string
+                    example: Ivanov
+                  username:
+                    type: string
+                    example: ivan
+                  createdAt:
+                    type: string
+                    format: date-time
+                    example: "2025-10-27T10:00:00Z"
+                required: [id, firstName, lastName, username, createdAt]
+        '400':
+          description: Validation error (missing/invalid field)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Password must be at least 8 characters and contain uppercase, lowercase, digit, special character"
+                  details:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        field:
+                          type: string
+                          example: "password"
+                        message:
+                          type: string
+                          example: "Password is too short"
+                required: [error, details]
+        '409':
+          description: User with this username already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "User with username 'ivan' already exists"
+                required: [error]
+        '422':
+          description: reCAPTCHA verification failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "reCAPTCHA verification failed"
+                required: [error]
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"
+                required: [error]
