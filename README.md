@@ -40,7 +40,7 @@
 ## Задача 3: API регистрации и алгоритм
 
 - **OpenAPI 3.0 спецификация**: [`task3_registration_api/registration_api.yaml`](task3_registration_api/registration_api.yaml)
-- **Алгоритм валидации и создания**: [`task3_registration_api/registration_algorithm.md`](task3_registration_api/registration_algorithm.md)
+- **Алгоритм валидации и создания**: [`task3_registration_api/user_creation_algorithm.md`](task3_registration_api/registration_algorithm.md)
 
 Включает:
 - HTTP-метод, URL, параметры
